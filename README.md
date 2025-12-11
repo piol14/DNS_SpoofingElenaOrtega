@@ -5,3 +5,6 @@ Ataque para alterar entradas en un servidor DNS para redirigir a la victima a un
 
 ## Funcionamiento 
 
+- Primero usa arpsoof para engañar al equipo victima  y conseguir que apunte al equipo atacante cuandi el usuario escriba el dominio contaminado en su navegador. Envenena la cache de resolucion de la victima
+- Otro comando arpsoof para engañar al servidor del dominio web para que piense que la IP de la victima es el del atacante
+- 
