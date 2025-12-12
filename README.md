@@ -21,42 +21,46 @@ Ataque para alterar entradas en un servidor DNS para redirigir a la victima a un
 En 2025 destaca el CVE-2025-40778, una vulnerabilidad  crítica en BIND 9 que permite insertar registros DNS falsos en la caché del servidor. Esto puede provocar redireccionamientos, robo de credenciales o suplantación de servicios.
 La mitigación se basa en actualizar los servidores DNS, activar DNSSEC y limitar la recursión solo a clientes de confianza. 
 
-## Ataque realizado
-1. Escenario
+## Ataque realizado  
 
-Máquina atacante: Kali Linux
+### 1. Escenario
+- **Máquina atacante:** Kali Linux  
+- **Máquina víctima:** Windows (equipo local)  
+- **Ambas en la misma red local**
 
-Máquina víctima: Windows (equipo local)
+---
 
-Ambas en la misma red local
+### 2. Recopilación de IP necesarias
 
-2. Recopilación de IP necesarias
-➤ IP de la máquina Kali
-
-Comando ejecutado: ip a
+#### ➤ IP de la máquina Kali  
+Comando ejecutado: `ip a`  
 <img width="831" height="239" alt="image" src="https://github.com/user-attachments/assets/9311fdb8-e39b-40a1-ac94-beea959fd700" />
 
-IP: 192.168.1.45
+- **IP:** `192.168.1.45`  
+- **Interfaz:** `eth0`
 
-Interfaz usada: eth0
+---
 
-➤ Gateway de la red
-
-Comando ejecutado: route -n
+#### ➤ Gateway de la red  
+Comando ejecutado: `route -n`  
 <img width="663" height="108" alt="image" src="https://github.com/user-attachments/assets/85666da5-653c-4091-ad6f-7c00edd8bb9d" />
 
-Gateway: 192.168.1.1
+- **Gateway:** `192.168.1.1`
 
-➤ IP de la máquina víctima (Windows)
+---
 
-Comando ejecutado: ipconfig
+#### ➤ IP de la máquina víctima (Windows)  
+Comando ejecutado: `ipconfig`  
 <img width="623" height="148" alt="image" src="https://github.com/user-attachments/assets/8eb06165-fc86-45e1-923c-4a46dd595edb" />
 
-IP: 192.168.1.44
+- **IP:** `192.168.1.44`
 
-3. Configuración de la web falsa con Apache2
+---
 
-En la máquina atacante (Kali) se instaló Apache2:
+### 3. Configuración de la web falsa con Apache2
 
+En la máquina atacante se instala Apache2:
+
+```bash
 sudo apt update
 sudo apt install apache2
