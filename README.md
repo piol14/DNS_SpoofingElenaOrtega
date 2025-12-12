@@ -74,12 +74,11 @@ sudo apt install apache2
 - Le damos permisos al index.html, al login.php y a capturas.txt , archivo donde se guardaran las creedenciales de la victima con el comando **sudo chown www-data /var/www/html/archivo** 
 <img width="435" height="53" alt="image" src="https://github.com/user-attachments/assets/2f157f4a-9405-4c4c-9ccf-ab43674d19f0" />
 
-- Encendemos apache con `sudo service apache2 start`
-<img width="314" height="44" alt="image" src="https://github.com/user-attachments/assets/fde9537b-5bcf-4e0d-9d76-857b4ca38a16" />
+- Encendemos apache con `sudo service apache2 start`  
+  <img width="314" height="44" alt="image" src="https://github.com/user-attachments/assets/fde9537b-5bcf-4e0d-9d76-857b4ca38a16" />
 
- Y comprobamos que funciona con `sudo service apache2 status`
-
-<img width="818" height="367" alt="image" src="https://github.com/user-attachments/assets/0f4397e3-2ded-4321-994d-b2c54fa2e670" />
+- Y comprobamos que funciona con `sudo service apache2 status`  
+  <img width="818" height="367" alt="image" src="https://github.com/user-attachments/assets/0f4397e3-2ded-4321-994d-b2c54fa2e670" />
 
 
 
