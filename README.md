@@ -76,7 +76,9 @@ sudo apt install apache2
 
 - Encendemos apache con `sudo service apache2 start`
 <img width="314" height="44" alt="image" src="https://github.com/user-attachments/assets/fde9537b-5bcf-4e0d-9d76-857b4ca38a16" />
+
  Y comprobamos que funciona con `sudo service apache2 status`
+
 <img width="818" height="367" alt="image" src="https://github.com/user-attachments/assets/0f4397e3-2ded-4321-994d-b2c54fa2e670" />
 
 
