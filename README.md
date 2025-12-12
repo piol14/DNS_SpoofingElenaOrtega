@@ -32,7 +32,7 @@ La mitigación se basa en actualizar los servidores DNS, activar DNSSEC y limita
 
 ### 2. Recopilación de IP necesarias
 
-#### ➤ IP de la máquina Kali  
+#### - IP de la máquina Kali  
 Comando ejecutado: `ip a`  
 <img width="831" height="239" alt="image" src="https://github.com/user-attachments/assets/9311fdb8-e39b-40a1-ac94-beea959fd700" />
 
@@ -41,7 +41,7 @@ Comando ejecutado: `ip a`
 
 ---
 
-#### ➤ Gateway de la red  
+#### - Gateway de la red  
 Comando ejecutado: `route -n`  
 <img width="663" height="108" alt="image" src="https://github.com/user-attachments/assets/85666da5-653c-4091-ad6f-7c00edd8bb9d" />
 
@@ -49,7 +49,7 @@ Comando ejecutado: `route -n`
 
 ---
 
-#### ➤ IP de la máquina víctima (Windows)  
+#### - IP de la máquina víctima (Windows)  
 Comando ejecutado: `ipconfig`  
 <img width="623" height="148" alt="image" src="https://github.com/user-attachments/assets/8eb06165-fc86-45e1-923c-4a46dd595edb" />
 
@@ -59,8 +59,25 @@ Comando ejecutado: `ipconfig`
 
 ### 3. Configuración de la web falsa con Apache2
 
-En la máquina atacante se instala Apache2:
+- En la máquina atacante se instala Apache2:
 
 ```bash
 sudo apt update
 sudo apt install apache2
+
+````
+- Editamos el index.html por defecto del apache y ponemos un formulario que pida al usuario el usuario y la contraseña
+- Para ello, modificaremos el archivo `/var/www/html/index.html ` y pondremos lo siguiente:
+<img width="905" height="565" alt="image" src="https://github.com/user-attachments/assets/858bf2b4-b96b-439f-af6f-4b92a369b6cd" />
+- Despues crearemos el archivo `login.php`en el mismo directorio que servira para capturar las creedenciales del html falso y pondremos lo siguiente:
+<img width="860" height="544" alt="image" src="https://github.com/user-attachments/assets/997841e8-394c-4ca2-ab89-ffefc698f615" />
+- Le damos permisos al index.html, al login.php y a capturas.txt , archivo donde se guardaran las creedenciales de la victima con el comando `sudo chown www-data /var/www/html/archivo` 
+<img width="435" height="53" alt="image" src="https://github.com/user-attachments/assets/2f157f4a-9405-4c4c-9ccf-ab43674d19f0" />
+
+- Encendemos apache con `sudo service apache2 start`
+<img width="314" height="44" alt="image" src="https://github.com/user-attachments/assets/fde9537b-5bcf-4e0d-9d76-857b4ca38a16" />
+ Y comprobamos que funciona con `sudo service apache2 status`
+<img width="818" height="367" alt="image" src="https://github.com/user-attachments/assets/0f4397e3-2ded-4321-994d-b2c54fa2e670" />
+
+
+
