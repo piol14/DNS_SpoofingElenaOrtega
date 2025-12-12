@@ -7,4 +7,56 @@ Ataque para alterar entradas en un servidor DNS para redirigir a la victima a un
 
 - Primero usa arpsoof para engañar al equipo victima  y conseguir que apunte al equipo atacante cuandi el usuario escriba el dominio contaminado en su navegador. Envenena la cache de resolucion de la victima
 - Otro comando arpsoof para engañar al servidor del dominio web para que piense que la IP de la victima es el del atacante
-- 
+- Crear un archivo HOST que apunte a la IP del equipo del atacante hacia la pagina web alterada. Esta se utilizara cuando la victima solicite el nombre del dominio
+- Recopilar datos de la victima en la red engañandolas para que se autentifiquen y ingresen informacion para capturarlas en el servidor atacante
+
+## Protocolos afectados 
+
+1. DNS: El principal afectado. El dns spoofing hace que no verifique la autenticidad de las respuestas
+2. UDP: Este atacante hace que el UDP no establezca una conexion confiable ya que no identifica la suplantacion de origen
+3. Cache Dns: La cache almacena registros falsos y el resolver acepta una respuesta falsa antes que la verdadera
+4. DNSSEC: El DNS spoofing explota la falta de autenticacion criptografica que ofrece este protocolo
+
+## Ejemplo vulnerabilidad CVE 
+En 2025 destaca el CVE-2025-40778, una vulnerabilidad  crítica en BIND 9 que permite insertar registros DNS falsos en la caché del servidor. Esto puede provocar redireccionamientos, robo de credenciales o suplantación de servicios.
+La mitigación se basa en actualizar los servidores DNS, activar DNSSEC y limitar la recursión solo a clientes de confianza. 
+
+## Ataque realizado
+1. Escenario
+
+Máquina atacante: Kali Linux
+
+Máquina víctima: Windows (equipo local)
+
+Ambas en la misma red local
+
+2. Recopilación de IP necesarias
+➤ IP de la máquina Kali
+
+Comando ejecutado: ip a
+<img width="831" height="239" alt="image" src="https://github.com/user-attachments/assets/9311fdb8-e39b-40a1-ac94-beea959fd700" />
+
+IP: 192.168.1.45
+
+Interfaz usada: eth0
+
+➤ Gateway de la red
+
+Comando ejecutado: route -n
+<img width="663" height="108" alt="image" src="https://github.com/user-attachments/assets/85666da5-653c-4091-ad6f-7c00edd8bb9d" />
+
+Gateway: 192.168.1.1
+
+➤ IP de la máquina víctima (Windows)
+
+Comando ejecutado: ipconfig
+<img width="623" height="148" alt="image" src="https://github.com/user-attachments/assets/8eb06165-fc86-45e1-923c-4a46dd595edb" />
+
+IP: 192.168.1.44
+
+3. Configuración de la web falsa con Apache2
+
+En la máquina atacante (Kali) se instaló Apache2:
+
+sudo apt update
+sudo apt install apache2
