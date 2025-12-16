@@ -107,6 +107,8 @@ sudo apt install apache2
 <img width="454" height="100" alt="image" src="https://github.com/user-attachments/assets/94b2e955-c631-4dd7-a12a-f8087c015298" />
 
 ## Ataque Ettercap 
+
+- Ettercap es una herramienta para realizar ataques Man-in-the-Middle mediante el envenenamiento ARP, permitiendo interceptar y manipular el tráfico de una red local. Se utiliza principalmente en auditorías de seguridad para capturar contraseñas, analizar protocolos y realizar inyecciones de datos en tiempo real. 
 - Ejecutamos el siguiente comando para ejecutar el dns spoofing sudo ettercap -T -q -i eth0 -M arp:remote /IP VICTIMA// /GATEWAY// -P dns_spoof
 - 
 - El comando explicado: El comando ejecuta Ettercap en modo texto (-T) y silencioso (-q), usando la interfaz eth0 (-i) para realizar un ataque de intercepción (MITM) mediante el engaño de tablas ARP (-M arp:remote) entre la víctima y el router.
