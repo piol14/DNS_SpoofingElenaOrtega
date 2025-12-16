@@ -68,10 +68,14 @@ sudo apt install apache2
 
 ````
 - Editamos el index.html por defecto del apache y ponemos un formulario que pida al usuario el usuario y la contraseña
+
 - Para ello, modificaremos el archivo **/var/www/html/index.html** y pondremos lo siguiente:
 <img width="905" height="565" alt="image" src="https://github.com/user-attachments/assets/858bf2b4-b96b-439f-af6f-4b92a369b6cd" />
+
 - Despues crearemos el archivo login.php  en el mismo directorio que servira para capturar las creedenciales del html falso y pondremos lo siguiente:
+
 <img width="860" height="544" alt="image" src="https://github.com/user-attachments/assets/997841e8-394c-4ca2-ab89-ffefc698f615" />
+
 - Le damos permisos al index.html, al login.php y a capturas.txt, archivo donde se guardarán las credenciales de la víctima con el comando  sudo chown www-data /var/www/html/archivo
 
 
