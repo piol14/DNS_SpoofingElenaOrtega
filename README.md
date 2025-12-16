@@ -129,3 +129,14 @@ Ahora accedemos al archivo capturas.txt que se encuentra en la carpeta /var/www/
 
  <img width="709" height="50" alt="image" src="https://github.com/user-attachments/assets/209e56cf-d8a3-48ee-be41-0614c3c28376" />
 
+## Como evitar DNS spoofing 
+
+- Usar DNSSEC: Implementa firmas digitales en los registros DNS para asegurar que la respuesta sea auténtica y no haya sido manipulada.
+
+- Configurar VPN: Al cifrar todo el tráfico desde tu dispositivo hasta un servidor seguro, los atacantes en la red local no pueden ver ni interceptar tus solicitudes DNS.
+
+- Usar DoH o DoT: Activar DNS over HTTPS o DNS over TLS en el navegador o sistema para cifrar las consultas DNS y evitar que sean legibles para terceros.
+
+- Tablas ARP Estáticas: En entornos críticos, configurar manualmente las direcciones MAC de los dispositivos (como el router) para impedir el envenenamiento ARP que facilita el spoofing.
+
+- Herramientas de Detección: Utilizar software como Arpwatch o sistemas de detección de intrusos (IDS) que alerten cuando hay cambios sospechosos en las tablas de red.
