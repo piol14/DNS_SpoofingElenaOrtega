@@ -114,5 +114,18 @@ Antes de mostrar los resultados del ataque, nos podemos fijar con el comando arp
 Pero, despues de ejecutar el ataque, las Macs del gateway y de la kali son iguales 
 
 <img width="466" height="103" alt="image" src="https://github.com/user-attachments/assets/21d1f73e-4724-41e3-9ac9-f868f14cd5ae" />
+
 Esto significa que el arp ha funcionado, ahora comprobaremos que si buscamos en la maquina victima marcosaguilar.com, aparecera la web creada antes que capturara creedenciales mediante un formulario:
+
+<img width="764" height="457" alt="image" src="https://github.com/user-attachments/assets/63d1d79a-46a3-4315-84fc-963d3af740de" />
+
+Introducimos las siguientes creedenciales: 
+
+- Usuario: elena
+- Contraseña: norris2puntos
+
+Ahora accedemos al archivo capturas.txt que se encuentra en la carpeta /var/www/html y vemos que ha capturado las creedenciales: 
+
+
+ <img width="709" height="50" alt="image" src="https://github.com/user-attachments/assets/209e56cf-d8a3-48ee-be41-0614c3c28376" />
 
