@@ -34,9 +34,10 @@ La mitigación se basa en actualizar los servidores DNS, activar DNSSEC y limita
 
 #### - IP de la máquina Kali  
 Comando ejecutado: `ip a`  
-<img width="831" height="239" alt="image" src="https://github.com/user-attachments/assets/9311fdb8-e39b-40a1-ac94-beea959fd700" />
+<img width="831" height="230" alt="image" src="https://github.com/user-attachments/assets/5d020bab-6c85-4890-95ac-b7337d5b528e" />
 
-- **IP:** `192.168.1.45`  
+
+- **IP:** `192.168.1.47`  
 - **Interfaz:** `eth0`
 
 ---
@@ -86,4 +87,32 @@ sudo apt install apache2
 
 
 ## Configuracion Ettercap 
-- Modificamos 
+- Modificamos el archivo /etc/ettercap/etter.conf:
+  - Cambiamos el ec_uid y ec_gid a 0, dandole permisos de root al ettercap
+    
+    <img width="500" height="84" alt="image" src="https://github.com/user-attachments/assets/4147f907-bcc3-40d1-b7b2-5db8aba97311" />
+  
+    - Descomentamos en el apartado linux redir_command_on, redir_command_off, redir6_command_on, redir6_command_off para la intercepción y manipulación activa del tráfico cuando el atacante logra posicionarse como intermediario
+    
+    <img width="849" height="206" alt="image" src="https://github.com/user-attachments/assets/9ff8e77f-02d1-471c-bb42-67bbdd6a481e" />
+
+
+  - Modificamos el archivo /etc/ettercap/etter.dns:
+  Ponemos la url que redirigiremos a la victima a nuestra web falsa y la ip del atacante para que funcione el apache
+
+<img width="454" height="100" alt="image" src="https://github.com/user-attachments/assets/94b2e955-c631-4dd7-a12a-f8087c015298" />
+
+## Ataque Ettercap 
+- Ejecutamos el siguiente comando para ejecutar el dns spoofing sudo ettercap -T -q -i eth0 -M arp:remote /IP VICTIMA// /GATEWAY// -P dns_spoof
+- 
+- El comando explicado: El comando ejecuta Ettercap en modo texto (-T) y silencioso (-q), usando la interfaz eth0 (-i) para realizar un ataque de intercepción (MITM) mediante el engaño de tablas ARP (-M arp:remote) entre la víctima y el router.
+
+Antes de mostrar los resultados del ataque, nos podemos fijar con el comando arp -a en la victima que las Macs del gateway y la de la ip de kali son **diferentes** 
+
+<img width="495" height="234" alt="image" src="https://github.com/user-attachments/assets/0936f719-5812-41f6-8da6-e073a170d52d" />
+
+Pero, despues de ejecutar el ataque, las Macs del gateway y de la kali son iguales 
+
+<img width="466" height="103" alt="image" src="https://github.com/user-attachments/assets/21d1f73e-4724-41e3-9ac9-f868f14cd5ae" />
+Esto significa que el arp ha funcionado, ahora comprobaremos que si buscamos en la maquina victima marcosaguilar.com, aparecera la web creada antes que capturara creedenciales mediante un formulario:
+
